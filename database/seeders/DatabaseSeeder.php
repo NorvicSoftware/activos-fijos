@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Asset;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(AssetSeeder::class);
+        Asset::factory(50)->create();
+
         // User::factory(10)->create();
 
         User::factory()->create([
