@@ -6,15 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\Asset;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Repositories\AssetRepository;
 
 class AssetController extends Controller
 {
+    protected $assets;
+
+    public function __construct(AssetRepository $assets)
+    {
+        $this->assets = $assets;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $assets = Asset::all();
+        $assets = $this->assets->getAssets();
         return Inertia::render('Assets/Index', ['assets' => $assets]);
     }
 
