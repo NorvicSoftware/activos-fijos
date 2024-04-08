@@ -17,14 +17,19 @@ return new class extends Migration
             $table->string('modelo')->nullable();
             $table->string('serie')->nullable();
             $table->enum('existencia', ['Activo', 'Dado de bajo'])->default('Activo');
-            $table->boolean('eliminado');
+            $table->boolean('eliminado')->default(false);
+            $table->unsignedBigInteger('agencia_id'); // Cambiado a unsignedBigInteger para reflejar la relación
+
+            // Clave foránea
+            $table->foreign('agencia_id')->references('id')->on('agencias');
         });
     }
+    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('activos_fijos');
     }
 };
