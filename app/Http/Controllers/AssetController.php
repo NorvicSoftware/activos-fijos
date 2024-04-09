@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Asset;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-use App\Repositories\AssetRepository;
+use App\Http\Repositories\AssetRepository;
 
 class AssetController extends Controller
 {

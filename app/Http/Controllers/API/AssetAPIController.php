@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Asset;
-use App\Repositories\AssetRepository;
+use App\Http\Repositories\AssetRepository;
 
 class AssetAPIController extends Controller
 {
@@ -22,7 +22,6 @@ class AssetAPIController extends Controller
     {
         $assets = $this->assets->getAssets();
         return response()->json(['asset' => $assets]);
-        
     }
 
     /**
@@ -30,7 +29,18 @@ class AssetAPIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5|max:75',
+            'code' => 'required|min:5'
+        ]);
+
+        $asset = new Asset();
+        $asset->name = $request->name;
+        $asset->code = $request->code;
+        $asset->description = $request->description;
+        $asset->save();
+
+        return response()->json(['OK' => 'OK']);
     }
 
     /**
@@ -38,7 +48,8 @@ class AssetAPIController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $asset = Asset::find($id);
+        return response()->json(['asset' => $asset]);
     }
 
     /**
@@ -46,7 +57,18 @@ class AssetAPIController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5|max:75',
+            'code' => 'required|min:5'
+        ]);
+
+        $asset = Asset::find($id);
+        $asset->name = $request->name;
+        $asset->code = $request->code;
+        $asset->description = $request->description;
+        $asset->save();
+
+        return response()->json(['EL ACTIVO FIJO:' => $asset->name]);
     }
 
     /**
