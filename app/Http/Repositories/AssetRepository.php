@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Http\Repositories;
 
 use App\Models\Asset;
 
@@ -8,7 +8,7 @@ use App\Models\Asset;
 class AssetRepository {
 
     public function getAssets() {
-        $assets = Asset::all();
+        $assets = Asset::where('id', '<', 5)->get();
         return $assets;
     }
 
