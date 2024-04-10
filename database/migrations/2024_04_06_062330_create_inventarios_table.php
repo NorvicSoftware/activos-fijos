@@ -18,8 +18,8 @@ return new class extends Migration
                 $table->date('fecha_final');
                 $table->text('detalle')->nullable();
                 $table->integer('cantidad_leidos')->nullable();
-                $table->unsignedBigInteger('encargado_id');
-                $table->foreign('encargado_id')->references('id')->on('encargados');
+                // $table->unsignedBigInteger('encargado_id');
+                // $table->foreign('encargado_id')->references('id')->on('encargados');
                 $table->timestamps();
             });
         }
