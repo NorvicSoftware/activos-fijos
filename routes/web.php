@@ -25,7 +25,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/managers', [ManagerController::class, 'index'])->name('managers.index');
-    
+
+
+    // Archivo routes/web.php
+
+Route::get('/managers', 'ManagerController@index');
+Route::get('/managers/create', 'ManagerController@create');
+Route::post('/managers', 'ManagerController@store');
+Route::get('/managers/{manager}', 'ManagerController@show');
+Route::get('/managers/{manager}/edit', 'ManagerController@edit'); 
+Route::put('/managers/{manager}', 'ManagerController@update');
+Route::delete('/managers/{manager}', 'ManagerController@destroy');
+
+
 });
 
 require __DIR__.'/auth.php';
