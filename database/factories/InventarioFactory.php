@@ -15,12 +15,12 @@ class InventarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'Nombre' => $this->faker->sentence,
-            'fecha_inicio' => $this->faker->date,
-            'fecha_final' => $this->faker->date,
-            'detalle' => $this->faker->paragraph,
-            'cantidad_leidos' => $this->faker->numberBetween(1, 100),
-            'encargado_id' => $this->faker->numberBetween(1, 10),
+            'name' => $this->faker->sentence,
+            'start-Date' => $this->faker->date,
+            'final_date' => $this->faker->date,
+            'details' => $this->faker->paragraph,
+            'number_book' => $this->faker->numberBetween(1, 100),
+            'manager_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
