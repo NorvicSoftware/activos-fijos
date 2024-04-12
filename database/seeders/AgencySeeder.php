@@ -15,7 +15,7 @@ class AgencySeeder extends Seeder
     
     public function run()
     { 
-        /*
+        
         Agency::create([
             'name' => 'Acme Agency',
             'address' => '123 Main Street',
@@ -27,7 +27,7 @@ class AgencySeeder extends Seeder
             'address' => '456 Elm Street',
             'phoneNumber' => '666-666-6666'
         ]);
-*/
-        \App\Models\Agency::factory(5)->create(); 
+
+        //\App\Models\Agency::factory(5)->create(); 
     }
 }
