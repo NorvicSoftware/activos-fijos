@@ -25,7 +25,7 @@ class AssetFactory extends Factory
             'series'=> $this->faker->text(),
             'exists'=> $this->faker->boolean(),
             'status'=> $this->faker->randomElement(['Active', 'Down']),
-            //'agency_id' => \App\Models\Agency::factory()->create()->id,
+            'agency_id' => \App\Models\Agency::factory()->create()->id,
         ];
     }
 }
