@@ -22,12 +22,12 @@ class AgencyFactory extends Factory
      * @param 
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => faker()->company(),
-            'address' => faker()->address,
-            'phoneNumber' => faker()->phoneNumber,
+            'name' => fake()->company(),
+            'address' => fake()->address,
+            'phoneNumber' => fake()->phoneNumber,
         ];
     }
 }
