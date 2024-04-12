@@ -17,4 +17,6 @@ class ActivoFijo extends Model
         return $this->belongsTo(Agencia::class);
     }
     */
+
+    
 }
