@@ -3,26 +3,31 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Models\Agency;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AppModelsAgency>
- */
 class AgencyFactory extends Factory
 {
     /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Agency::class;
+
+    /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @param 
+     * @return array
      */
-    use App\Models\Agency;
-
-    protected $model = table_agency::class;
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'address' => $this->faker->address,
-            'phoneNumber' => $this->faker->phoneNumber,
+            'name' => faker()->company(),
+            'address' => faker()->address,
+            'phoneNumber' => faker()->phoneNumber,
         ];
     }
 }
