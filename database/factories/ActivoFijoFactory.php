@@ -2,22 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\ActivoFijo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ActivoFijo>
- */
 class ActivoFijoFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = ActivoFijo::class;
+    public function definition()
     {
         return [
-            //
+                'marca' => $this->faker->word,
+                'modelo' => $this->faker->word,
+                'serie' => $this->faker->word,
+                'existencia' => $this->faker->randomElement(['Activo', 'Dado de bajo']),
+                'eliminado' => $this->faker->boolean,
+               // 'agencia_id' => \App\Models\Agencia::factory()->create()->id,
         ];
     }
 }
