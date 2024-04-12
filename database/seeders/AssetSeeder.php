@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Asset;
 
-class ActivoFijoSeeder extends Seeder
+class AssetSeeder extends Seeder
 {
     public function run()
     {
@@ -19,7 +19,7 @@ class ActivoFijoSeeder extends Seeder
         $asset->series = "455433";
         $asset->exists = true;
         $asset->status = "Active";
-        $asset->agency_id = 1;
+        //$asset->agency_id = 1;
         $asset->save();
     }
 }

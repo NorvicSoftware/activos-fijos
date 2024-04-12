@@ -19,14 +19,15 @@ return new class extends Migration
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
             $table->string('series')->nullable();
-            $table->enum('exists', ['Active', 'Down'])->default('Active');
-            $table->boolean('status')->default(false);
-            $table->unsignedBigInteger('agency_id');
-
-            // Clave foránea
-            $table->foreign('agency_id')->references('id')->on('agencies');
-            
+            $table->boolean('exists')->default(true);
+            $table->enum('status', ['Active', 'Down'])->default('Active');
             $table->timestamps();
+            //$table->unsignedBigInteger('agency_id');
+
+            /* Clave foranea
+            $table->foreign('agency_id')->references('id')->on('agencies');
+            */
+            
 
         
         });
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assets');
+        Schema::dropIfExists('Assest');
     }
 };
