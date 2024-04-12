@@ -16,6 +16,14 @@ return new class extends Migration
             $table->string('name', 75);
             $table->string('code', 15);
             $table->text('description')->nullable();
+            $table->string('branch')->nullable();
+            $table->string('model')->nullable();
+            $table->string('number_serial')->nullable();
+            $table->enum('exist', ['Activo', 'Dado de bajo'])->default('Activo');
+            $table->boolean('status')->default(false);
+            
+            $table->unsignedBigInteger('agency_id'); 
+            $table->foreign('agency_id')->references('id')->on('agencies');
 
             $table->timestamps();
         });
