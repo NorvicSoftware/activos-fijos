@@ -28,4 +28,6 @@ Route::middleware('auth')->group(function () {
     
 });
 
+Route::resource('agencies', AgencyController::class);
+
 require __DIR__.'/auth.php';
