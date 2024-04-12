@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name', 75);
             $table->string('code', 15);
+
             $table->string('description');
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
             $table->string('series')->nullable();
             $table->boolean('exists')->default(true);
             $table->enum('status', ['Active', 'Down'])->default('Active');
+
             $table->timestamps();
             //$table->unsignedBigInteger('agency_id');
 
