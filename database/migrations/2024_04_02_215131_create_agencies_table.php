@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name', 75);
             $table->string('address', 75);
             $table->string('phoneNumber', 25)->nullable();
-            $table->primary('id');
             $table->timestamps();
         });
     }
