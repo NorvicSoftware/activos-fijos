@@ -10,7 +10,7 @@ class Inventario extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Nombre', 'fecha_inicio', 'fecha_final', 'detalle', 'cantidad_leidos', 'encargado_id'
+        'Name', 'Start_date', 'final_date', 'Details', 'Number-books', 'manager_id'
     ];
 
     public function encargado()
