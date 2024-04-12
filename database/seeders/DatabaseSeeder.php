@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
         Asset::factory(50)->create();
 
         
-        
-
         // Sembrar datos para Inventario
         Inventario::factory(50)->create();
     }
