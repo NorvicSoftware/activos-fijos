@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Inventario;
+use App\Models\Inventory;
 use App\Models\Asset;
 
 use Illuminate\Database\Seeder;
@@ -14,15 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Sembrar datos para Asset
+        // Sembrar datos para Asset usando el seeder
         $this->call(AssetSeeder::class);
-        Asset::factory(50)->create();
-
         
-        
-
         // Sembrar datos para Inventario
-        Inventario::factory(50)->create();
+        Inventory::factory(50)->create();
+
     }
 }
-
