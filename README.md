@@ -67,4 +67,6 @@ La combinación de estas tecnologías permite desarrollar un Sistema Web de Gest
 - Garantiza el cumplimiento normativo.
 - Mejora la colaboración entre departamentos.
 - Aumenta la productividad y la eficiencia del personal.
+
 - El Sistema Web de Gestión de Activos Fijos es una herramienta indispensable para las organizaciones que buscan optimizar la gestión de sus activos fijos y mejorar su - rentabilidad.
+
