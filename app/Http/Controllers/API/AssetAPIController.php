@@ -5,23 +5,16 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Asset;
-use App\Http\Repositories\AssetRepository;
 
 class AssetAPIController extends Controller
 {
-    protected $assets;
-
-    public function __construct(AssetRepository $assets)
-    {
-        $this->assets = $assets;
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $assets = $this->assets->getAssets();
-        return response()->json(['asset' => $assets]);
+        $assets = Asset::all();
+        return response()->json(['assets' => $assets]);
     }
 
     /**
@@ -34,48 +27,44 @@ class AssetAPIController extends Controller
             'code' => 'required|min:5'
         ]);
 
-        $asset = new Asset();
-        $asset->name = $request->name;
-        $asset->code = $request->code;
-        $asset->description = $request->description;
-        $asset->save();
+        $asset = Asset::create($request->all());
 
-        return response()->json(['OK' => 'OK']);
+        return response()->json(['asset' => $asset], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $asset = Asset::find($id);
+        $asset = Asset::findOrFail($id);
         return response()->json(['asset' => $asset]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|min:5|max:75',
             'code' => 'required|min:5'
         ]);
 
-        $asset = Asset::find($id);
-        $asset->name = $request->name;
-        $asset->code = $request->code;
-        $asset->description = $request->description;
-        $asset->save();
+        $asset = Asset::findOrFail($id);
+        $asset->update($request->all());
 
-        return response()->json(['EL ACTIVO FIJO:' => $asset->name]);
+        return response()->json(['message' => 'Asset updated successfully']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $asset = Asset::findOrFail($id);
+        $asset->delete();
+
+        return response()->json(['message' => 'Asset deleted successfully']);
     }
 }

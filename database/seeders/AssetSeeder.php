@@ -19,7 +19,7 @@ class AssetSeeder extends Seeder
         $asset->series = "455433";
         $asset->exists = true;
         $asset->status = "Active";
-        //$asset->agency_id = 1;
+        $asset->agency_id = 1;
         $asset->save();
     }
 }
