@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Inventario;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
