@@ -13,13 +13,14 @@ class InventoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $faker->sentence(),
-            'start_date' => $faker->date(),
-            'final_date' => $faker->date(),
-            'details' => $faker->paragraph,
-            'number_books' => $faker->numberBetween(1, 100),
-            // Aquí podrías definir cómo obtener el manager_id, dependiendo de cómo estén configuradas tus relaciones en el modelo
-            'manager_id' => \App\Models\Manager::factory()->create()->id,
+            'name' => $this->faker->sentence,
+            'start_date' => $this->faker->date,
+            'final_date' => $this->faker->date,
+            'details' => $this->faker->paragraph,
+            
+            'number_books' => $this->faker->numberBetween(1, 100),
+            // Puedes ajustar más campos según tus necesidades
+
         ];
     }
 }
