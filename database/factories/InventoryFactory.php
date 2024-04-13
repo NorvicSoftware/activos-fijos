@@ -1,19 +1,33 @@
-    <?php
+<?php
+
+namespace Database\Factories;
 
 use App\Models\Inventory;
-use Illuminate\Support\Str;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Inventory::class, function (Faker $faker) {
-    return [
-        'name' => $faker->sentence,
-        'start_date' => $faker->date,
-        'final_date' => $faker->date,
-        'details' => $faker->paragraph,
-        'number_books' => $faker->numberBetween(1, 100),
-        // Aquí podrías definir cómo obtener el manager_id, dependiendo de cómo estén configuradas tus relaciones en el modelo
-        'manager_id' => function () {
-            return factory(App\Models\Manager::class)->create()->id;
-        },
-    ];
-});
+class InventoryFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Inventory::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->sentence,
+            'start_date' => $this->faker->date,
+            'final_date' => $this->faker->date,
+            'details' => $this->faker->paragraph,
+            'number_books' => $this->faker->numberBetween(1, 100),
+            // Puedes ajustar más campos según tus necesidades
+        ];
+    }
+}
