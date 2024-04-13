@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Manager;
 
 class Inventory extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name', 'start_date', 'final_date', 'details', 'number_books', 'manager_id'
+    ];
 
-    protected $table = 'inventories';
+    protected $dates = [
+        'start_date', 'final_date'
+    ];
 
-    protected $fillable = ['name', 'start_Date', 'final_date', 'details', 'number_books', 'manager_id'];
-
-    // Define relaciones aquí, si las hay
     public function manager()
-{
-    return $this->belongsTo(Manager::class);
-}
-
+    {
+        return $this->belongsTo(Manager::class);
+    }
 }

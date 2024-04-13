@@ -27,7 +27,7 @@ class AgencySeeder extends Seeder
             'address' => '456 Elm Street',
             'phoneNumber' => '666-666-6666'
         ]);
-*/
-        \App\Models\Agency::factory(5)->create(); 
+        */
+        \App\Models\Agency::factory(50)->create(); 
     }
 }
