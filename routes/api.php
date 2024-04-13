@@ -19,3 +19,8 @@ Route::get('/assets', [AssetAPIController::class, 'index']);
 Route::post('/assets/create', [AssetAPIController::class, 'store']);
 Route::get('/assets/show/{assetId}', [AssetAPIController::class, 'show']);
 Route::put('/assets/edit/{assetId}', [AssetAPIController::class, 'update']);
+
+Route::get('/agencies', [AssetAPIController::class, 'index']);
+Route::post('/agencies/create', [AssetAPIController::class, 'store']);
+Route::get('/agencies/show/{assetId}', [AssetAPIController::class, 'show']);
+Route::put('/agencies/edit/{assetId}', [AssetAPIController::class, 'update']);

@@ -1,25 +1,16 @@
 <?php
+<?php
 
 namespace Database\Factories;
 
-use App\Models\Inventory;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InventoryFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Inventory::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+
+    public function definition(): array
     {
         return [
             'name' => $this->faker->sentence,
@@ -29,6 +20,8 @@ class InventoryFactory extends Factory
             
             'number_books' => $this->faker->numberBetween(1, 100),
             // Puedes ajustar más campos según tus necesidades
+
         ];
     }
 }
+;

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Agency;
 
+
+
 class AgencyFactory extends Factory
 {
     /**
