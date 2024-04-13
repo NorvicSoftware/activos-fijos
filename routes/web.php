@@ -40,4 +40,6 @@ Route::delete('/managers/{manager}', 'ManagerController@destroy');
 
 });
 
+Route::resource('agencies', AgencyController::class);
+
 require __DIR__.'/auth.php';

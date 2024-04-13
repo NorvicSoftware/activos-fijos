@@ -10,14 +10,24 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
             $table->string('name', 75);
             $table->string('code', 15);
-            $table->text('description')->nullable();
 
+            $table->string('description');
+            $table->string('brand')->nullable();
+            $table->string('model')->nullable();
+            $table->string('series')->nullable();
+            $table->boolean('exists')->default(true);
+            $table->enum('status', ['Active', 'Down'])->default('Active');
+            $table->unsignedBigInteger('agency_id');
             $table->timestamps();
+            
+            //Clave foranea
+            $table->foreign('agency_id')->references('id')->on('agencies');
+        
         });
     }
 
@@ -26,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assets');
+        Schema::dropIfExists('Assest');
     }
 };
