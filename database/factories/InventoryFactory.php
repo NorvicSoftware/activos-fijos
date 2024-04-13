@@ -26,6 +26,7 @@ class InventoryFactory extends Factory
             'start_date' => $this->faker->date,
             'final_date' => $this->faker->date,
             'details' => $this->faker->paragraph,
+            
             'number_books' => $this->faker->numberBetween(1, 100),
             // Puedes ajustar más campos según tus necesidades
         ];
