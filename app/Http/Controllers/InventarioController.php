@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventario;
+use App\Models\Inventory;
 use App\Models\ActivoFijo;
 use Illuminate\Http\Request;
 
