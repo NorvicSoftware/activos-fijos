@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agency extends Model
 {
     use HasFactory;
-    protected $table = 'table_agency';
+    protected $table = 'agencies';
     protected $fillable = [
         'name',
         'address',
