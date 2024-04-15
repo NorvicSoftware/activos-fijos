@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AssetSeeder::class);
         
         // Sembrar datos para Inventario
-        Inventory::factory(50)->create();
+        
+        $this->call(InventorySeeder::class);
 
     }
 }
