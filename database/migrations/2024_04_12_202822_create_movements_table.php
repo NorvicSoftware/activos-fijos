@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('detail'); 
             $table->unsignedBigInteger('asset_id');
             $table->unsignedBigInteger('agency_previous_id')->nullable(); 
-            $table->unsignedBigInteger('agency_current_id'); 
+            $table->unsignedBigInteger('agency_current_id')->nullable(); 
 
             $table->timestamps(); 
 
