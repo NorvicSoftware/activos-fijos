@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\InventoryController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/managers', [ManagerController::class, 'index'])->name('managers.index');
 
     Route::get('/assets', [AssetController::class, 'index'])->name('assets.index');
+
+    Route::get('/inventories', [InventoryController::class, 'index'])->name('inventory.index');
     
 });
 
