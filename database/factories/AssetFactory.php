@@ -28,7 +28,7 @@ class AssetFactory extends Factory
             'name' => $this->faker->name(),
             'code' => $this->faker->numberBetween(100, 100000),
             'description' => $this->faker->text(),
-            'brand'=> $this->faker->text(),
+            'brand'=> $this->faker->text(75),
             'model'=> $this->faker->text(),
             'series'=> $this->faker->text(),
             'exists'=> $this->faker->boolean(),

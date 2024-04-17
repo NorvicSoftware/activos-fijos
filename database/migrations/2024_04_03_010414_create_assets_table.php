@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('code', 15);
 
             $table->string('description');
-            $table->string('brand')->nullable();
-            $table->string('model')->nullable();
-            $table->string('series')->nullable();
+            $table->string('brand', 75)->nullable();
+            $table->string('model', 75)->nullable();
+            $table->string('series', 35)->nullable();
             $table->boolean('exists')->default(true);
             $table->enum('status', ['Active', 'Down'])->default('Active');
             $table->unsignedBigInteger('agency_id');

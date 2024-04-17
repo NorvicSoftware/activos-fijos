@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asset;
+use Inertia\Inertia;
 
 class AssetController extends Controller
 {
     public function index()
     {
         $assets = Asset::all();
-        return view('assets.index', ['assets' => $assets]);
+        return Inertia::render('Assets/Index', ['assets' => $assets]);
+        //return view('assets.index', ['assets' => $assets]);
     }
 
     public function create()

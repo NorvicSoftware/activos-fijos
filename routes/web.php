@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\AssetController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -25,9 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/managers', [ManagerController::class, 'index'])->name('managers.index');
+
+    Route::get('/assets', [AssetController::class, 'index'])->name('assets.index');
     
 });
 
-Route::resource('agencies', AgencyController::class);
+//Route::resource('agencies', AgencyController::class);
 
 require __DIR__.'/auth.php';
