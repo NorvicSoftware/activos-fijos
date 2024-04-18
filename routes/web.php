@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\InventoryController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

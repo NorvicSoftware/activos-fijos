@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AssetAPIController;
+use App\Http\Controllers\InventoryApiController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -24,3 +25,10 @@ Route::get('/agencies', [AssetAPIController::class, 'index']);
 Route::post('/agencies/create', [AssetAPIController::class, 'store']);
 Route::get('/agencies/show/{assetId}', [AssetAPIController::class, 'show']);
 Route::put('/agencies/edit/{assetId}', [AssetAPIController::class, 'update']);
+
+
+
+Route::get('inventories/{id}', [InventoryApiController::class, 'show']);
+Route::post('inventories/store', [InventoryApiController::class, 'store']);
+Route::put('inventories/{id}', [InventoryApiController::class, 'update']);
+
