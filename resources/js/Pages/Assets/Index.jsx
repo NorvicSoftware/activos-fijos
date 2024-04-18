@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, usePage } from "@inertiajs/react";
+import ButtonReference from "@/Components/ButtonReference";
 
 export default function Index({ auth }) {
     const { assets } = usePage().props;
@@ -13,6 +14,7 @@ export default function Index({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <ButtonReference url="/assets/create" name="Crear nuevo Activo Fijo" />
                             <table>
                                 <thead>
                                     <tr>
@@ -35,6 +37,7 @@ export default function Index({ auth }) {
                                     }
                                 </tbody>
                             </table>
+                            <ButtonReference url="/dashboard" name="ATRAS" />
                         </div>
                     </div>
                 </div>

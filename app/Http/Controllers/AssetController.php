@@ -17,7 +17,8 @@ class AssetController extends Controller
 
     public function create()
     {
-        return view('assets.create');
+        return Inertia::render('Assets/Create');
+        //return view('assets.create');
     }
 
     public function store(Request $request)
@@ -26,8 +27,15 @@ class AssetController extends Controller
             'name' => 'required|min:5|max:75',
             'code' => 'required|min:5'
         ]);
+        
+        $asset = new Asset();
+        $asset->name = $request->name;
+        $asset->code = $request->code;
+        $asset->description = 'descripcion del activo fijo';
+        $asset->agency_id = 1;
+        $asset->save();
 
-        Asset::create($request->all());
+        // Asset::create($request->all());
 
         return redirect()->route('assets.index');
     }

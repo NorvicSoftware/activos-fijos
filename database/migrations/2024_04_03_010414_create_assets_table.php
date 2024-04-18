@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('model', 75)->nullable();
             $table->string('series', 35)->nullable();
             $table->boolean('exists')->default(true);
-            $table->enum('status', ['Active', 'Down'])->default('Active');
+            $table->enum('status', ['Activo', 'Pasivo'])->default('Activo');
             $table->unsignedBigInteger('agency_id');
             $table->timestamps();
             
