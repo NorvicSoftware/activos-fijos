@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/assets', [AssetController::class, 'index'])->name('assets.index');
     Route::get('/assets/create', [AssetController::class, 'create'])->name('assets.create');
     Route::post('/assets/create', [AssetController::class, 'store'])->name('assets.store');
+    Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
+    Route::put('/assets/edit/{id}', [AssetController::class, 'update'])->name('assets.update');
     
 });
 

@@ -17,7 +17,7 @@ class AssetController extends Controller
 
     public function create()
     {
-        return Inertia::render('Assets/Create');
+        return Inertia::render('Assets/Create', ['id' => 0]);
         //return view('assets.create');
     }
 
@@ -49,7 +49,8 @@ class AssetController extends Controller
     public function edit($id)
     {
         $asset = Asset::findOrFail($id);
-        return view('assets.edit', ['asset' => $asset]);
+        return Inertia::render('Assets/Create', ['asset' => $asset, 'id' => $id]);
+        // return view('assets.edit', ['asset' => $asset]);
     }
 
     public function update(Request $request, $id)
@@ -60,7 +61,13 @@ class AssetController extends Controller
         ]);
 
         $asset = Asset::findOrFail($id);
-        $asset->update($request->all());
+        // $asset->update($request->all());
+        // $asset = new Asset();
+        $asset->name = $request->name;
+        $asset->code = $request->code;
+        // $asset->description = 'descripcion del activo fijo';
+        // $asset->agency_id = 1;
+        $asset->save();
 
         return redirect()->route('assets.index');
     }

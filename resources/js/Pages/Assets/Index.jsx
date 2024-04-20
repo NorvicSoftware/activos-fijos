@@ -22,6 +22,7 @@ export default function Index({ auth }) {
                                         <th>Codigo</th>
                                         <th>Marca</th>
                                         <th>Modelo</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,13 +32,16 @@ export default function Index({ auth }) {
                                             <td>{asset.code}</td>
                                             <td>{asset.brand}</td>
                                             <td>{asset.model}</td>
+                                            <td>
+                                                <a href={route('assets.edit', asset.id)}>Editar</a>
+                                            </td>
                                         </tr>
                                     ))
 
                                     }
                                 </tbody>
                             </table>
-                            <ButtonReference url="/dashboard" name="ATRAS" />
+                            <ButtonReference url="/dashboard" name="IR DASHBOARD" />
                         </div>
                     </div>
                 </div>
