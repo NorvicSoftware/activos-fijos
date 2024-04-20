@@ -14,6 +14,15 @@ class InventorySeeder extends Seeder
      */
     public function run()
     {
-        \Illuminate\Database\Eloquent\Factories\Factory::factoryForModel(Inventory::class)->count(50)->create();
+        $inventory = new Inventory();
+        $inventory->name = "Invetario fisico gestion 2023";
+        $inventory->start_date = "2023-12-01";
+        $inventory->final_date = "2023-12-15";
+        $inventory->details = "Se realizo el inventario fisico de la gestion 2023 los detalles son los siguientes:";
+        $inventory->read = 500;
+        $inventory->not_read = 200;
+        $inventory->agency_id = 1;
+        $inventory->manager_id = 1;
+        $inventory->save();
     }
 }

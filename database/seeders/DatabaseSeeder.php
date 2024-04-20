@@ -15,10 +15,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Sembrar datos para Asset usando el seeder
-        $this->call(AssetSeeder::class);
+        // $this->call(AssetSeeder::class);
+        $this->call(ManagerSeeder::class);
+        $this->call(AgencySeeder::class);
+        $this->call(InventorySeeder::class);
+        Asset::factory(50)->create();
+
+
         
         // Sembrar datos para Inventario
-        Inventory::factory(50)->create() ;
+        // Inventory::factory(50)->create() ;
 
     }
 }

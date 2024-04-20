@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('agencies', function (Blueprint $table) {
             $table->id();
             $table->string('name', 75);
-            $table->string('address', 75);
-            $table->string('phoneNumber', 25)->nullable();
+            $table->string('address', 250)->nullable();
+            $table->string('phone_number', 25)->nullable();
             $table->timestamps();
         });
     }
