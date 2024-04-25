@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\RepairController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -33,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/assets/create', [AssetController::class, 'store'])->name('assets.store');
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::put('/assets/edit/{id}', [AssetController::class, 'update'])->name('assets.update');
+
+    Route::get('/repairs', [RepairController::class, 'index'])->name('repairs.index');
+    Route::get('/repairs/create', [RepairController::class, 'create'])->name('repairs.create');
+    Route::post('/repairs/create', [RepairController::class, 'store'])->name('repairs.store');
+    Route::get('/repairs/edit/{id}', [RepairController::class, 'edit'])->name('repairs.edit');
+    Route::put('/repairs/edit/{id}', [RepairController::class, 'update'])->name('repairs.update');
     
 });
 
