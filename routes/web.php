@@ -33,7 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/assets/create', [AssetController::class, 'store'])->name('assets.store');
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::put('/assets/edit/{id}', [AssetController::class, 'update'])->name('assets.update');
-    
+
+    Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories.index');
+Route::get('/inventories/create', [InventoryController::class, 'create'])->name('inventories.create');
+Route::post('/inventories', [InventoryController::class, 'store'])->name('inventories.store');
+Route::get('/inventories/{id}', [InventoryController::class, 'show'])->name('inventories.show');
+Route::get('/inventories/{id}/edit', [InventoryController::class, 'edit'])->name('inventories.edit');
+Route::put('/inventories/{id}', [InventoryController::class, 'update'])->name('inventories.update');
+Route::delete('/inventories/{id}', [InventoryController::class, 'destroy'])->name('inventories.destroy');
+Route::get('/inventories/search', [InventoryController::class, 'search'])->name('inventories.search');
 });
 
 //Route::resource('agencies', AgencyController::class);
