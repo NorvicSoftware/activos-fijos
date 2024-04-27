@@ -26,8 +26,6 @@ Route::post('/agencies/create', [AssetAPIController::class, 'store']);
 Route::get('/agencies/show/{assetId}', [AssetAPIController::class, 'show']);
 Route::put('/agencies/edit/{assetId}', [AssetAPIController::class, 'update']);
 
-
-
 Route::get('inventories/{id}', [InventoryApiController::class, 'show']);
 Route::post('inventories/store', [InventoryApiController::class, 'store']);
 Route::put('inventories/{id}', [InventoryApiController::class, 'update']);

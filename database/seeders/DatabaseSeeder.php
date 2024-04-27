@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ManagerSeeder::class);
         $this->call(AgencySeeder::class);
         $this->call(InventorySeeder::class);
-        Asset::factory(50)->create();
+        $this->call(AssetSeeder::class);
+        // Asset::factory(50)->create();
         $this->call(RepairSeeder::class);
 
 
