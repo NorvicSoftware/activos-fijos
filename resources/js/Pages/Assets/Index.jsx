@@ -20,8 +20,11 @@ export default function Index({ auth }) {
                                     <tr>
                                         <th>Activo fijo</th>
                                         <th>Codigo</th>
+                                        <th>Descripcion</th>
                                         <th>Marca</th>
                                         <th>Modelo</th>
+                                        <th>Serie</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -30,8 +33,11 @@ export default function Index({ auth }) {
                                         <tr key={asset.id}>
                                             <td>{asset.name}</td>
                                             <td>{asset.code}</td>
+                                            <td>{asset.description}</td>
                                             <td>{asset.brand}</td>
                                             <td>{asset.model}</td>
+                                            <td>{asset.series}</td>
+                                            <td>{asset.status}</td>
                                             <td>
                                                 <a href={route('assets.edit', asset.id)}>Editar</a>
                                             </td>

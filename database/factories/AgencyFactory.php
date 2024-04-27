@@ -29,7 +29,7 @@ class AgencyFactory extends Factory
         return [
             'name' => fake()->company(),
             'address' => fake()->address,
-            'phoneNumber' => fake()->phoneNumber,
+            'phone_number' => fake()->phoneNumber,
         ];
     }
 }
