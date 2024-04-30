@@ -22,15 +22,11 @@ return new class extends Migration
             $table->string('series')->nullable();
             $table->boolean('exists')->default(true);
             $table->enum('status', ['Active', 'Down'])->default('Active');
-
+            $table->unsignedBigInteger('agency_id');
             $table->timestamps();
-            //$table->unsignedBigInteger('agency_id');
-
-            /* Clave foranea
-            $table->foreign('agency_id')->references('id')->on('agencies');
-            */
             
-
+            //Clave foranea
+            $table->foreign('agency_id')->references('id')->on('agencies');
         
         });
     }
