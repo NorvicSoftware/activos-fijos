@@ -17,7 +17,7 @@ class AgencyController extends Controller
     
     public function create()
     {
-        return Inertia::render('Agencies/Create', ['id' => 0]);
+        return Inertia::render('agencies/create', ['id' => 0]);
     }
     public function store(Request $request)
     {
