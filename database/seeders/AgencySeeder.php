@@ -15,19 +15,13 @@ class AgencySeeder extends Seeder
     
     public function run()
     { 
-        /*
-        Agency::create([
-            'name' => 'Acme Agency',
-            'address' => '123 Main Street',
-            'phoneNumber' => '555-555-5555'
-        ]);
+        $agency = new Agency();
+        $agency->name = "Agencia Miraflores";
+        $agency->save();
 
-        Agency::create([
-            'name' => 'Bravo Inc.',
-            'address' => '456 Elm Street',
-            'phoneNumber' => '666-666-6666'
-        ]);
-        */
-        \App\Models\Agency::factory(50)->create(); 
+        $agency1 = new Agency();
+        $agency1->name = "Agencia Cala Cala";
+        $agency1->save();
+        Agency::factory(50)->create(); 
     }
 }

@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('name', 75);
             $table->string('code', 15);
+            $table->string('description')->nullable();
+            $table->string('brand', 75)->nullable();
+            $table->string('model', 75)->nullable();
+            $table->string('series', 35)->nullable();
+            $table->boolean('checked')->default(false);
+            $table->enum('status', ['Activo', 'Pasivo'])->default('Activo');
 
-            $table->string('description');
-            $table->string('brand')->nullable();
-            $table->string('model')->nullable();
-            $table->string('series')->nullable();
-            $table->boolean('exists')->default(true);
-            $table->enum('status', ['Active', 'Down'])->default('Active');
             $table->unsignedBigInteger('agency_id');
+            $table->foreign('agency_id')->references('id')->on('agencies');
+
             $table->timestamps();
             
-            //Clave foranea
-            $table->foreign('agency_id')->references('id')->on('agencies');
         
         });
     }

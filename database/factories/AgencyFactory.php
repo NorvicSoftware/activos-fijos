@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Agency;
 
+
+
 class AgencyFactory extends Factory
 {
     /**
@@ -27,7 +29,7 @@ class AgencyFactory extends Factory
         return [
             'name' => fake()->company(),
             'address' => fake()->address,
-            'phoneNumber' => fake()->phoneNumber,
+            'phone_number' => fake()->phoneNumber,
         ];
     }
 }
