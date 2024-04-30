@@ -8,6 +8,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\RepairController;
+use App\Http\Controllers\AgencyController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -40,6 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/repairs/create', [RepairController::class, 'store'])->name('repairs.store');
     Route::get('/repairs/edit/{id}', [RepairController::class, 'edit'])->name('repairs.edit');
     Route::put('/repairs/edit/{id}', [RepairController::class, 'update'])->name('repairs.update');
+
+    Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
+    Route::get('/agecies/create', [AgencyController::class, 'create'])->name('agencies.create');
+    Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');
+    Route::get('/agencies/edit/{id}', [AgencyController::class, 'edit'])->name('agencies.edit');
+    Route::put('/agencies/edit/{id}', [AgencyController::class, 'update'])->name('agencies.update');
+
     
 });
 

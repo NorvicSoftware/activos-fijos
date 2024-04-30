@@ -21,10 +21,10 @@ Route::post('/assets/create', [AssetAPIController::class, 'store']);
 Route::get('/assets/show/{assetId}', [AssetAPIController::class, 'show']);
 Route::put('/assets/edit/{assetId}', [AssetAPIController::class, 'update']);
 
-Route::get('/agencies', [AssetAPIController::class, 'index']);
-Route::post('/agencies/create', [AssetAPIController::class, 'store']);
-Route::get('/agencies/show/{assetId}', [AssetAPIController::class, 'show']);
-Route::put('/agencies/edit/{assetId}', [AssetAPIController::class, 'update']);
+Route::get('/agencies', [AgencyAPIController::class, 'index']);
+Route::post('/agencies/create', [AgencyAPIController::class, 'store']);
+Route::get('/agencies/show/{agencyId}', [AgencyAPIController::class, 'show']);
+Route::put('/agencies/edit/{agencyId}', [AgencyAPIController::class, 'update']);
 
 Route::get('inventories/{id}', [InventoryApiController::class, 'show']);
 Route::post('inventories/store', [InventoryApiController::class, 'store']);
