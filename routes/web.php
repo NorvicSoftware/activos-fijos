@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/managers', [ManagerController::class, 'index'])->name('managers.index');
 
+
+
+    // Archivo routes/web.php
+
     Route::get('/assets', [AssetController::class, 'index'])->name('assets.index');
     Route::get('/assets/create', [AssetController::class, 'create'])->name('assets.create');
     Route::post('/assets/create', [AssetController::class, 'store'])->name('assets.store');
