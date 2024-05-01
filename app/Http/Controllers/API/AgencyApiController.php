@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agency;
 use Illuminate\Http\Request;
-use App\Repositories\AgencyRepositoryInterface;
+use App\Repositories\AgencyRepository;
 
 class AgencyApiController extends Controller
 {   
@@ -31,7 +31,7 @@ class AgencyApiController extends Controller
             'address' => 'required|string',
             'phoneNumber' => 'required|string',
         ]);
-        $agency = new Asset();
+        $agency = new Agency();
         $agency->name = $request->name;
         $agency->address = $request->address;
         $agency->phoneNumber = $request->phoneNumber;

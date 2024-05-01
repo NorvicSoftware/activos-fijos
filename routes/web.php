@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/repairs/edit/{id}', [RepairController::class, 'update'])->name('repairs.update');
 
     Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
-    Route::get('/agecies/create', [AgencyController::class, 'create'])->name('agencies.create');
+    Route::get('/agencies/create', [AgencyController::class, 'create'])->name('agencies.create');
     Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');
     Route::get('/agencies/edit/{id}', [AgencyController::class, 'edit'])->name('agencies.edit');
     Route::put('/agencies/edit/{id}', [AgencyController::class, 'update'])->name('agencies.update');
