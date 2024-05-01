@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Agency;
+use Inertia\Inertia;
+
 
 class AgencyController extends Controller
 {
-    public function indexAction()
+    public function index()
     {
         $agencies = Agency::all();
-        return view('agencies.index', compact('agencies'));
+        return view('agencies.index', ['agencies' => $agencies]);
     }
     public function create()
     {
-        return view('agencies.create');
+        return view('Agencies.create');
     }
     public function store(Request $request)
     {

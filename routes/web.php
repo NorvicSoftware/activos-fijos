@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\RepairController;
 
@@ -41,6 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/repairs/edit/{id}', [RepairController::class, 'edit'])->name('repairs.edit');
     Route::put('/repairs/edit/{id}', [RepairController::class, 'update'])->name('repairs.update');
     
+    Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
+    Route::get('/agencies/create', [AgencyController::class, 'create'])->name('agencies.create');
+    Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');
+
 });
 
 //Route::resource('agencies', AgencyController::class);
