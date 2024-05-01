@@ -14,18 +14,15 @@ class ManagerSeeder extends Seeder
     public function run(): void
     {
 
-  $Managers= new Manager();
-  $Managers->full_name = "jeo";
-  $Managers->address ="Barrio coboce";
-  $Managers->phone ="7747044";
-  $Managers->charge ="Administrador";
-  $Managers->save();
+        $manager = new Manager();
+        $manager->full_name = "Juan Perez";
+        $manager->charge = "Encargado de Activos fijos";
+        $manager->save();
 
-  $Managers2= new Manager();
-  $Managers2->full_name = "Edmudno ";
-  $Managers2->address ="km 12";
-  $Managers2->phone ="76913090";
-  $Managers2->charge ="Ventas";
-  $Managers2->save();
+        $manager1 = new Manager();
+        $manager1->full_name = "Daniel Lopez";
+        $manager1->charge = "Auxiliar de Activos fijos";
+        $manager1->save();
+
     }
 }

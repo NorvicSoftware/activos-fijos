@@ -10,19 +10,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('inventories')) {
-            Schema::create('inventories', function (Blueprint $table) {
-                $table->id();
-                $table->string('name');
-                $table->date('start_Date');
-                $table->date('final_date');
-                $table->text('details')->nullable();
-                $table->integer('number_books')->nullable();
-                $table->unsignedBigInteger('manager_id')->nullable();
-                $table->foreign('manager_id')->references('id')->on('managers')->onDelete('set null'); 
-                $table->timestamps();
-            });
-        }
+        Schema::create('inventories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->date('start_Date');
+            $table->date('final_date');
+            $table->text('details')->nullable();
+            $table->integer('read');
+            $table->integer('not_read');
+
+
+            $table->unsignedBigInteger('agency_id');
+            $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
+
+            $table->unsignedBigInteger('manager_id')->nullable();
+            $table->foreign('manager_id')->references('id')->on('managers')->onDelete('set null'); 
+            $table->timestamps();
+
+            
+        });
     }
 
     /**
@@ -30,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-    
+        Schema::dropIfExists('inventories');
     }
 };

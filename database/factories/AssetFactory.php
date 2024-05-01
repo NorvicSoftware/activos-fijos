@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Asset;
+use App\Models\Agency;
 
 class AssetFactory extends Factory
 {
@@ -26,14 +27,14 @@ class AssetFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'code' => $this->faker->numberBetween(100, 100000),
-            'description' => $this->faker->text(),
-            'brand'=> $this->faker->text(),
-            'model'=> $this->faker->text(),
-            'series'=> $this->faker->text(),
-            'exists'=> $this->faker->boolean(),
-            'status'=> $this->faker->randomElement(['Active', 'Down']),
-            'agency_id' => \App\Models\Agency::factory()->create()->id,
+            'code' => $this->faker->numberBetween(100, 10000),
+            'description' => $this->faker->text(120),
+            'brand'=> $this->faker->text(40),
+            'model'=> $this->faker->text(40),
+            'series'=> $this->faker->numberBetween(100,10000),
+            'checked'=> $this->faker->boolean(),
+            'status'=> $this->faker->randomElement(['Activo', 'Pasivo']),
+            'agency_id' => Agency::all()->random()->id,
         ];
     }
 }

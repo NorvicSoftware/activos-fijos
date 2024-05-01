@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Agency extends Model
 {
@@ -15,32 +16,14 @@ class Agency extends Model
         'phoneNumber'
     ];
 
-    public function getName()
+
+    public function inventories(): HasMany
     {
-        return $this->name;
+        return $this->hasMany(Inventory::class);
     }
-    public function getAddress()
+    
+    public function assets(): HasMany
     {
-        return $this->address;
-    }
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
-    }
-    public function setName()
-    {
-        $this->name = $name;
-    }
-    public function setAddress()
-    {
-        $this->address = $address;
-    }
-    public function setPhoneNumber()
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-    public function related_table()
-    {
-        return $this->belongsToMany(Manager::class);
+        return $this->hasMany(Manager::class);
     }
 }
