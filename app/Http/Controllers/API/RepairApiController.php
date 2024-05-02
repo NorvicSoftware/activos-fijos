@@ -50,18 +50,18 @@ class RepairApiController extends Controller
             'detail' => 'required|string'
         ]);
 
-        $agency = Agency::findOrFail($id);
-        $agency->update($request->all());
+        $repair = Repair::findOrFail($id);
+        $repair->update($request->all());
 
-        return response()->json(['message' => 'Agency updated successfully']);
+        return response()->json(['message' => 'Repair updated successfully']);
     }
 
     // Destroy: Delete an agency
     public function destroy($id)
     {
-        $agency = Agency::findOrFail($id);
-        $agency->delete();
+        $repair = Repair::findOrFail($id);
+        $repair->delete();
 
-        return response()->json(['message' => 'Agency deleted successfully']);
+        return response()->json(['message' => 'Repair deleted successfully']);
     }
 }
