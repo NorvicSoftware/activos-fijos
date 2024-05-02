@@ -27,11 +27,11 @@ class AssetFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'code' => $this->faker->numberBetween(100, 100000),
-            'description' => $this->faker->text(250),
-            'brand'=> $this->faker->text(75),
-            'model'=> $this->faker->text(75),
-            'series'=> $this->faker->text(35),
+            'code' => $this->faker->numberBetween(100, 10000),
+            'description' => $this->faker->text(120),
+            'brand'=> $this->faker->text(40),
+            'model'=> $this->faker->text(40),
+            'series'=> $this->faker->numberBetween(100,10000),
             'checked'=> $this->faker->boolean(),
             'status'=> $this->faker->randomElement(['Activo', 'Pasivo']),
             'agency_id' => Agency::all()->random()->id,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Manager;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class ManagerController extends Controller
 {
@@ -22,7 +23,7 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Managers/Create');
     }
 
     /**
@@ -30,7 +31,20 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'full_name' => 'required|min:5|max:75',
+            'address' => 'required|max:75',
+            'phone' => 'required|max:8',
+            'charge'=> 'required|max:30',
+        ]);
+
+        $managers = new Manager();
+        $managers->full_name = $request->full_name;
+        $managers->address = $request->address;
+        $managers->phone = $request->phone;
+        $managers->charge =$request->charge;
+        $managers->save();
+        return Redirect::route('manager.index');
     }
 
     /**
@@ -38,7 +52,8 @@ class ManagerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $managers = Manager::find($id);
+        return Inertia::render('Managers/Show', ['managers' => $managers]);
     }
 
     /**
@@ -46,7 +61,8 @@ class ManagerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $managers = Manager::find($id);
+        return Inertia::render('Managers/Edit', ['managers' => $managers]);
     }
 
     /**
@@ -54,7 +70,21 @@ class ManagerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'full_name' => 'required|min:5|max:75',
+            'address' => 'required|max:75',
+            'phone' => 'required|max:8',
+            'charge'=> 'required|max:30',
+        ]);
+
+        $managers = Manager::find($id);
+        $managers->full_name = $request->full_name;
+        $managers->address = $request->address;
+        $managers->phone = $request->phone;
+        $managers->charge =$request->charge;
+        $managers->save();
+
+        return Redirect::route('manager.index');
     }
 
     /**
@@ -62,6 +92,9 @@ class ManagerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $managers = Manager::find($id);
+        $managers->delete();
+
+        return Redirect::route('managers.index');
     }
 }

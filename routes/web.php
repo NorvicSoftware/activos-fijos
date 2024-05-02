@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\RepairController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -28,6 +29,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/managers', [ManagerController::class, 'index'])->name('managers.index');
 
+
+
+    // Archivo routes/web.php
+
     Route::get('/assets', [AssetController::class, 'index'])->name('assets.index');
     Route::get('/assets/create', [AssetController::class, 'create'])->name('assets.create');
     Route::post('/assets/create', [AssetController::class, 'store'])->name('assets.store');
@@ -44,6 +49,14 @@ Route::delete('/inventories/{id}', [InventoryController::class, 'destroy'])->nam
 Route::get('/inventories/search', [InventoryController::class, 'search'])->name('inventories.search');
 Route::put('/inventories/{inventory}/assets/{asset}', 'InventoryController@updateAssetStatus')->name('inventories.assets.update');
 Route::get('/inventories/read/assets', [InventoryController::class, 'read'])->name('inventories.read');
+
+
+    Route::get('/repairs', [RepairController::class, 'index'])->name('repairs.index');
+    Route::get('/repairs/create', [RepairController::class, 'create'])->name('repairs.create');
+    Route::post('/repairs/create', [RepairController::class, 'store'])->name('repairs.store');
+    Route::get('/repairs/edit/{id}', [RepairController::class, 'edit'])->name('repairs.edit');
+    Route::put('/repairs/edit/{id}', [RepairController::class, 'update'])->name('repairs.update');
+    
 
 });
 
