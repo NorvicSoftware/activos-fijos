@@ -21,6 +21,11 @@ class Inventory extends Model
         return $this->belongsTo(Agency::class);
     }
 
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
+
     public function manager(): BelongsTo
     {
         return $this->belongsTo(Manager::class);

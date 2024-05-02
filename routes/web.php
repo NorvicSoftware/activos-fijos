@@ -42,6 +42,9 @@ Route::get('/inventories/{id}/edit', [InventoryController::class, 'edit'])->name
 Route::put('/inventories/{id}', [InventoryController::class, 'update'])->name('inventories.update');
 Route::delete('/inventories/{id}', [InventoryController::class, 'destroy'])->name('inventories.destroy');
 Route::get('/inventories/search', [InventoryController::class, 'search'])->name('inventories.search');
+Route::put('/inventories/{inventory}/assets/{asset}', 'InventoryController@updateAssetStatus')->name('inventories.assets.update');
+Route::get('/inventories/read/assets', [InventoryController::class, 'read'])->name('inventories.read');
+
 });
 
 //Route::resource('agencies', AgencyController::class);

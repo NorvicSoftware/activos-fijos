@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\Models\Asset;
 use Illuminate\Http\Request;
 use App\Models\Inventory;
 use Inertia\Inertia;
@@ -19,11 +18,19 @@ class InventoryController extends Controller
         return Inertia::render('Inventories/Create' );
     }
 
+    public function read()
+    {
+        $assets = Asset::all();
+
+        return Inertia::render('Inventories/Read',['assets' => $assets ] );
+
+    }
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'start_date' => 'required|date',
+            'start_Date' => 'required|date',
             'final_date' => 'required|date',
             'details' => 'nullable',
             'read' => 'nullable|integer',
@@ -40,7 +47,14 @@ class InventoryController extends Controller
     public function show($id)
     {
         $inventory = Inventory::findOrFail($id);
-        return Inertia::render('Inventories/Show', ['inventory' => $inventory]);
+        
+        // Obtener los activos asociados a esta entrada de inventario
+        $assets = $inventory->assets()->get();
+        
+        // También puedes cargar la relación con eager loading para evitar N+1 queries
+        // $inventory->load('assets');
+
+        return Inertia::render('Inventories/Show', ['inventory' => $inventory, 'assets' => $assets]);
     }
 
     public function edit($id)
@@ -90,4 +104,22 @@ class InventoryController extends Controller
 
         return Inertia::render('Inventories/SearchResults', ['inventories' => $inventories]);
     }
+
+    public function updateAssetStatus(Request $request, $inventoryId, $assetId)
+{
+    $request->validate([
+        'status' => 'required|in:Activo,Pasivo', // Asegúrate de que el estado solo pueda ser "Activo" o "Pasivo"
+    ]);
+
+    $inventory = Inventory::findOrFail($inventoryId);
+    $asset = $inventory->assets()->findOrFail($assetId);
+    $asset->status = $request->input('status');
+    $asset->save();
+
+    return redirect()->back()->with('success', 'Estado del activo actualizado exitosamente.');
+}
+
+
+    
+
 }
