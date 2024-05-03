@@ -6,7 +6,7 @@ export default function Index({ auth }) {
     const { assets } = usePage().props;
 
     return (
-        <AuthenticatedLayout user={auth.user} header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Activos Fijos</h2>}>
+        <AuthenticatedLayout user={auth.user} header={<h2 className="font-semibold text-xl text-gray-800 dark:text-black-200 leading-tight">Activos Fijos</h2>}>
             <Head title="Activos Fijos" />
 
             <div className="py-10">
