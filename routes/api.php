@@ -4,11 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AssetAPIController;
 
-use App\Http\Controllers\API\InventoryAPIController;
+
 
 use App\Http\Controllers\API\AgencyApiController;
-use App\Http\Controllers\InventoryApiController;
-use App\Http\Controllers\API\AgencyApiController;
+use App\Http\Controllers\API\InventoryApiController;
+
 
 
 Route::get('/user', function (Request $request) {
