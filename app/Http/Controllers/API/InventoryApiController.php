@@ -1,58 +1,112 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\ActivoFijo;
+use App\Http\Controllers\Controller;
+use App\Models\Asset;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
-class InventoryApiController extends Controller
+class InventoryAPIController extends Controller
 {
-    public function show($id)
+    public function index()
     {
-        // Obtener los datos del activo fijo
-        $activoFijo = ActivoFijo::findOrFail($id);
+        $inventories = Inventory::all();
+        return response()->json(['inventories' => $inventories]);
+    }
 
-        // Retornar los datos del activo fijo
-        return response()->json($activoFijo);
+  
+    public function create()
+    {
+        // En un ApiController, probablemente no necesitarías una ruta para crear una vista.
+        // En su lugar, puedes utilizar solicitudes POST para crear recursos.
+    }
+
+    public function read()
+    {
+        $assets = Asset::all();
+        return response()->json(['assets' => $assets]);
     }
 
     public function store(Request $request)
     {
-        // Validar la petición
         $request->validate([
-            'asset_id' => 'required|exists:activo_fijos,id',
+            'name' => 'required',
+            'start_Date' => 'required|date',
+            'final_date' => 'required|date',
+            'details' => 'nullable',
+            'read' => 'nullable|integer',
+            'not_read' => 'nullable|integer',
+            // Agrega validación para otros campos según sea necesario
         ]);
 
-        // Obtener el activo fijo
-        $activoFijo = ActivoFijo::findOrFail($request->activo_fijo_id);
+        $inventory = Inventory::create($request->all());
 
-        // Verificar si el activo fijo ya ha sido leído
-        if ($activoFijo->estado === 'read') {
-            return response()->json(['message' => 'The asset has already been read.'], 422);
-        }
+        return response()->json(['message' => 'Inventario creado exitosamente.'], 201);
+    }
 
-        // Actualizar el estado del activo fijo a 'Leído'
-        $activoFijo->estado = 'read';
-        $activoFijo->contador++;
-        $activoFijo->save();
+    public function show($id)
+    {
+        $inventory = Inventory::findOrFail($id);
+        $assets = $inventory->assets()->get();
+        return response()->json(['inventory' => $inventory, 'assets' => $assets]);
+    }
 
-        return response()->json(['message' => 'Fixed asset status updated to "Read".']);
+    public function edit($id)
+    {
+        // En un ApiController, probablemente no necesitarías una ruta para editar una vista.
+        // En su lugar, puedes utilizar solicitudes PUT o PATCH para actualizar recursos.
     }
 
     public function update(Request $request, $id)
     {
-        // Obtener el activo fijo
-        $activoFijo = ActivoFijo::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'start_date' => 'required|date',
+            'final_date' => 'required|date',
+            'details' => 'nullable',
+            'read' => 'nullable|integer',
+            'not_read' => 'nullable|integer',
+            // Agrega validación para otros campos según sea necesario
+        ]);
 
-        // Verificar si el activo fijo ya ha sido leído
-        if ($activoFijo->estado === 'read') {
-            return response()->json(['message' => 'The asset has already been read.'], 422);
-        }
+        $inventory = Inventory::findOrFail($id);
+        $inventory->update($request->all());
 
-        // Actualizar el estado del activo fijo a 'Leído'
-        $activoFijo->estado = 'read';
-        $activoFijo->save();
+        return response()->json(['message' => 'Inventario actualizado exitosamente.']);
+    }
 
-        return response()->json(['message' => 'Fixed asset status updated to "Read".']);
+    public function destroy($id)
+    {
+        $inventory = Inventory::findOrFail($id);
+        $inventory->delete();
+
+        return response()->json(['message' => 'Inventario eliminado exitosamente.']);
+    }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search_code' => 'required|string', // Validación del código de búsqueda
+        ]);
+
+        $searchCode = $request->input('search_code');
+        $inventories = Inventory::where('code', 'LIKE', "%$searchCode%")->get();
+
+        return response()->json(['inventories' => $inventories]);
+    }
+
+    public function updateAssetStatus(Request $request, $inventoryId, $assetId)
+    {
+        $request->validate([
+            'status' => 'required|in:Activo,Pasivo', // Asegúrate de que el estado solo pueda ser "Activo" o "Pasivo"
+        ]);
+
+        $inventory = Inventory::findOrFail($inventoryId);
+        $asset = $inventory->assets()->findOrFail($assetId);
+        $asset->status = $request->input('status');
+        $asset->save();
+
+        return response()->json(['message' => 'Estado del activo actualizado exitosamente.']);
     }
 }

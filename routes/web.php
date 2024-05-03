@@ -40,6 +40,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/assets/edit/{id}', [AssetController::class, 'edit'])->name('assets.edit');
     Route::put('/assets/edit/{id}', [AssetController::class, 'update'])->name('assets.update');
 
+    Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories.index');
+Route::get('/inventories/create', [InventoryController::class, 'create'])->name('inventories.create');
+Route::post('/inventories', [InventoryController::class, 'store'])->name('inventories.store');
+Route::get('/inventories/{id}', [InventoryController::class, 'show'])->name('inventories.show');
+Route::get('/inventories/{id}/edit', [InventoryController::class, 'edit'])->name('inventories.edit');
+Route::put('/inventories/{id}', [InventoryController::class, 'update'])->name('inventories.update');
+Route::delete('/inventories/{id}', [InventoryController::class, 'destroy'])->name('inventories.destroy');
+Route::get('/inventories/search', [InventoryController::class, 'search'])->name('inventories.search');
+Route::put('/inventories/{inventory}/assets/{asset}', 'InventoryController@updateAssetStatus')->name('inventories.assets.update');
+Route::get('/inventories/read/assets', [InventoryController::class, 'read'])->name('inventories.read');
+
+
     Route::get('/repairs', [RepairController::class, 'index'])->name('repairs.index');
     Route::get('/repairs/create', [RepairController::class, 'create'])->name('repairs.create');
     Route::post('/repairs/create', [RepairController::class, 'store'])->name('repairs.store');
@@ -53,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/agencies/edit/{id}', [AgencyController::class, 'update'])->name('agencies.update');
 
     
+
     Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
     Route::get('/agencies/create', [AgencyController::class, 'create'])->name('agencies.create');
     Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');

@@ -30,6 +30,14 @@ export default function Authenticated({ user, header, children }) {
                                     Activos Fijos
                                 </NavLink>
                             </div>
+
+
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                             <NavLink href={route('inventories.index')} active={route().current('inventories.index')}>
+                                     Inventarios
+                                </NavLink>
+                                        </div>
+
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('agencies.index')} active={route().current('agencies.index')}>
                                     Agencias
@@ -41,6 +49,7 @@ export default function Authenticated({ user, header, children }) {
                                     Reparaciones
                                 </NavLink>
                             </div>
+
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
