@@ -19,7 +19,7 @@ class AssetSeeder extends Seeder
         $asset1 = new Asset();
         $asset1->name = "Televisor Samsung";
         $asset1->code = "122333";
-        $asset1->agency_id = 1;
+        $asset1->agency_id = 2;
         $asset1->save();
 
     }
