@@ -8,9 +8,6 @@ use App\Models\Asset;
 
 class AssetAPIController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $assets = Asset::all();

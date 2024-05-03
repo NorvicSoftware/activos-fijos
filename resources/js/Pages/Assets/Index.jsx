@@ -4,7 +4,6 @@ import ButtonReference from "@/Components/ButtonReference";
 
 export default function Index({ auth }) {
     const { assets } = usePage().props;
-    //console.log(assets);
 
     return (
         <AuthenticatedLayout user={auth.user} header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Activos Fijos</h2>}>

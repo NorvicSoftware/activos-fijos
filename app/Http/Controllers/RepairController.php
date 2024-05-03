@@ -42,7 +42,6 @@ class RepairController extends Controller
         $repair->repair_date = $request->repair_date;
         $repair->price = $request->price;
         $repair->detail = $request->detail;
-        $repair->asset_id = $request->asset_id;
         $repair->save();
         
         return redirect()->route('repairs.index')->with('success', 'Reparacion creado exitosamente.');
@@ -83,7 +82,7 @@ class RepairController extends Controller
         $repair->repair_date = $request->repair_date;
         $repair->price = $request->price;
         $repair->detail = $request->detail;
-        $repair->asset_id = $request->asset_id;
+        $repair->repair_id = $request->repair_id;
         $repair->save();
         
         return redirect()->route('repairs.index')->with('success', 'Reparacion creado exitosamente.');

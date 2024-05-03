@@ -4,10 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\RepairController;
+use App\Http\Controllers\AgencyController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -56,7 +57,18 @@ Route::get('/inventories/read/assets', [InventoryController::class, 'read'])->na
     Route::post('/repairs/create', [RepairController::class, 'store'])->name('repairs.store');
     Route::get('/repairs/edit/{id}', [RepairController::class, 'edit'])->name('repairs.edit');
     Route::put('/repairs/edit/{id}', [RepairController::class, 'update'])->name('repairs.update');
+
+    Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
+    Route::get('/agencies/create', [AgencyController::class, 'create'])->name('agencies.create');
+    Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');
+    Route::get('/agencies/edit/{id}', [AgencyController::class, 'edit'])->name('agencies.edit');
+    Route::put('/agencies/edit/{id}', [AgencyController::class, 'update'])->name('agencies.update');
+
     
+
+    Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
+    Route::get('/agencies/create', [AgencyController::class, 'create'])->name('agencies.create');
+    Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');
 
 });
 
