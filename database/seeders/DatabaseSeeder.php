@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Inventory;
 use App\Models\Asset;
-
+use App\Models\Manager;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,13 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ManagerSeeder::class);
         $this->call(AgencySeeder::class);
         $this->call(InventorySeeder::class);
-        Asset::factory(50)->create();
-        $this->call(RepairSeeder::class);
-
-
-        
+        $this->call(AssetSeeder::class);
+      
         // Sembrar datos para Inventario
         // Inventory::factory(50)->create() ;
+
 
     }
 }

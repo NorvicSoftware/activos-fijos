@@ -13,6 +13,7 @@ class ManagerSeeder extends Seeder
      */
     public function run(): void
     {
+
         $manager = new Manager();
         $manager->full_name = "Juan Perez";
         $manager->charge = "Encargado de Activos fijos";
@@ -22,5 +23,6 @@ class ManagerSeeder extends Seeder
         $manager1->full_name = "Daniel Lopez";
         $manager1->charge = "Auxiliar de Activos fijos";
         $manager1->save();
+
     }
 }

@@ -11,7 +11,7 @@ class RepairSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         $repair = new Repair();
         $repair->repair_date = "2024-04-24";

@@ -23,8 +23,14 @@ class AssetAPIController extends Controller
             'name' => 'required|min:5|max:75',
             'code' => 'required|min:5'
         ]);
+        $asset = new Asset();
+        $asset->name = $request->name;
+        $asset->code = $request->code;
+        $asset->agency_id = 1;
+        $asset->save();
 
-        $asset = Asset::create($request->all());
+
+        // $asset = Asset::create($request->all());
 
         return response()->json(['asset' => $asset], 201);
     }

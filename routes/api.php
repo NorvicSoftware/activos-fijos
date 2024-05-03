@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AssetAPIController;
+use App\Http\Controllers\API\AgencyApiController;
 use App\Http\Controllers\InventoryApiController;
 use App\Http\Controllers\API\AgencyApiController;
 
@@ -24,8 +25,8 @@ Route::put('/assets/edit/{assetId}', [AssetAPIController::class, 'update']);
 
 Route::get('/agencies', [AgencyApiController::class, 'index']);
 Route::post('/agencies/create', [AgencyApiController::class, 'store']);
-Route::get('/agencies/show/{assetId}', [AgencyApiController::class, 'show']);
-Route::put('/agencies/edit/{assetId}', [AgencyApiController::class, 'update']);
+Route::get('/agencies/show/{agencyId}', [AgencyApiController::class, 'show']);
+Route::put('/agencies/edit/{agencyId}', [AgencyApiController::class, 'update']);
 
 
 Route::get('inventories/{id}', [InventoryApiController::class, 'show']);

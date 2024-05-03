@@ -16,7 +16,6 @@ return new class extends Migration
             $table->date('repair_date');
             $table->decimal('price', 10, 2);
             $table->string('detail', 250);
-
             $table->unsignedBigInteger('asset_id');
             $table->foreign('asset_id')->references('id')->on('assets');
 
