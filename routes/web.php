@@ -53,6 +53,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/agencies/edit/{id}', [AgencyController::class, 'update'])->name('agencies.update');
 
     
+    Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
+    Route::get('/agencies/create', [AgencyController::class, 'create'])->name('agencies.create');
+    Route::post('/agencies/create', [AgencyController::class, 'store'])->name('agencies.store');
+
 });
 
 //Route::resource('agencies', AgencyController::class);
